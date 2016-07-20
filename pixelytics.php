@@ -97,23 +97,7 @@ function pixelytics_analytics() {
  */
 
 function pixelytics_pixel() {
-	$pixel_id = get_option('pixel_id');
-?>
-<!-- Facebook Pixel Code -->
-<script>
-	!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-	n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-	n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-	t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-	document,'script','https://connect.facebook.net/en_US/fbevents.js');
-
-	fbq('init', '<?php echo $pixel_id ?>');
-	fbq('track', "PageView");</script>
-	<noscript><img height="1" width="1" style="display:none"
-	src="https://www.facebook.com/tr?id=<?php echo $pixel_id ?>&ev=PageView&noscript=1"
-	/></noscript>
-	<!-- End Facebook Pixel Code -->
-<?php
+	include plugin_dir_path( __FILE__ ) . 'admin/class-pixelytics-pixel.php';
 }
 
 register_activation_hook(__FILE__, 'activate_pixelytics');
@@ -126,6 +110,14 @@ register_deactivation_hook(__FILE__, 'deactive_pixelytics');
 function style_pixelytics() {
 	wp_enqueue_style( 'pixelytics_style', plugins_url('css/style.css', __FILE__ ) );
 	wp_enqueue_script( 'pixelytics_js', plugins_url('js/pixelytics.js', __FILE__ ) );
+}
+
+function save_alert() {
+    ?>
+    <div class="updated notice">
+        <p><?php _e( 'Settings saved.', 'pixelytics' ); ?></p>
+    </div>
+    <?php
 }
 
 if (is_admin()) {
