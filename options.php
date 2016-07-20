@@ -54,6 +54,14 @@
                         </td>
                     </tr>
                     <tr>
+                        <th scope="row">
+                            Enable Lead Tracking:
+                        </th>
+                        <td>
+                            <input type="checkbox" name="pixel_lead_tracking" value="1" <?php checked( '1', get_option( 'pixel_lead_tracking' ) ); ?>>
+                        </td>
+                    </tr>
+                    <tr>
                     	<th scope="row">
 							Enable Analytics:
                     	</th>
@@ -65,7 +73,7 @@
             </div>
             <input name="action" type="hidden" value="update"/>
             <p class="submit">
-                <input class="button-primary" type="submit" value="<?php _e('Save All Changes') ?>"/>
+                <input class="button-primary" type="submit" value="<?php _e('Save All Changes'); ?>"/>
             </p>
         </form>
     </div>
