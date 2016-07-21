@@ -72,7 +72,7 @@ class wp_auto_update
             $obj->package = $this->update_path;
             $transient->response[$this->plugin_slug] = $obj;
         }
-        var_dump($transient);
+        //var_dump($transient);
         return $transient;
     }
  
