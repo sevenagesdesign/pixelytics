@@ -10,7 +10,7 @@
  * Plugin Name:       Pixelytics
  * Plugin URI:        https://github.com/soulexpression/pixelytics
  * Description:       Adds Google Analytics and Facebook Pixels to your WordPress website
- * Version:           1.0.0
+ * Version:           1.2.1
  * Author:            Seven Ages Design
  * Author URI:        http://sevenagesdesign.com/
  * License:           GPL-3.0+
@@ -74,14 +74,18 @@ function options_page_pixelytics() {
  * Check for plugin updates
  */
 
-add_action('init', 'pixelytics_update');
 function pixelytics_update() {
+	/**
+	 * @since 1.2.1
+	 * @package pixelytics
+	 */
 	require_once ('admin/class-pixelytics-update.php');
 	$pixelytics_current_version = '1.0';
 	$pixelytics_remote_path = 'http://www.sevenagesdesign.com/plugins/pixelytics/update.php';
 	$pixelytics_slug = plugin_basename( __FILE__ );
 	new wp_auto_update ($pixelytics_current_version, $pixelytics_remote_path, $pixelytics_slug);
 }
+add_action('init', 'pixelytics_update');
 
 /**
  * Adds Google Analytics to the head of the page
