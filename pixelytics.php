@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name:       Pixelytics
  * Plugin URI:        https://github.com/soulexpression/pixelytics
- * Description:       Adds Google Analytics and Facebook Pixels
+ * Description:       Adds Google Analytics and Facebook Pixels to your WordPress website
  * Version:           1.0.0
  * Author:            Seven Ages Design
  * Author URI:        http://sevenagesdesign.com/
@@ -71,6 +71,19 @@ function options_page_pixelytics() {
 }
 
 /**
+ * Check for plugin updates
+ */
+
+add_action('init', 'pixelytics_update');
+function pixelytics_update() {
+	require_once ('admin/class-pixelytics-update.php');
+	$pixelytics_current_version = '1.0';
+	$pixelytics_remote_path = 'http://localhost/update.php';
+	$pixelytics_slug = plugin_basename( __FILE__ );
+	new wp_auto_update ($pixelytics_current_version, $pixelytics_remote_path, $pixelytics_slug);
+}
+
+/**
  * Adds Google Analytics to the head of the page
  */
 
@@ -103,7 +116,7 @@ function pixelytics_pixel() {
 register_activation_hook(__FILE__, 'activate_pixelytics');
 register_deactivation_hook(__FILE__, 'deactive_pixelytics');
 
-/*
+/**
  * Load stylesheets, etc
  */
 
@@ -111,6 +124,10 @@ function style_pixelytics() {
 	wp_enqueue_style( 'pixelytics_style', plugins_url('css/style.css', __FILE__ ) );
 	wp_enqueue_script( 'pixelytics_js', plugins_url('js/pixelytics.js', __FILE__ ) );
 }
+
+/**
+ * Set alert for saved settings
+ */
 
 function save_alert() {
     ?>
