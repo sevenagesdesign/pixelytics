@@ -74,6 +74,7 @@ function options_page_pixelytics() {
  * Check for plugin updates
  */
 
+add_action('init', 'pixelytics_update');
 function pixelytics_update() {
 	require_once ('admin/class-pixelytics-update.php');
 	$pixelytics_current_version = '1.0';
@@ -140,7 +141,6 @@ if (is_admin()) {
 	add_action( 'admin_init', 'admin_init_pixelytics' );
 	add_action( 'admin_menu', 'admin_menu_pixelytics' );
 	add_action( 'admin_enqueue_scripts', 'style_pixelytics' );
-	add_action('init', 'pixelytics_update');
 }
 
 if (!is_admin()) {
