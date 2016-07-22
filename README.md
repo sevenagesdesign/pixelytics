@@ -14,7 +14,8 @@ Once you've installed Pixelytics, go to the Pixelytics page in your WordPress Ad
 
 ##### Using Analytics
 
-* To enable Google Analytics, find your Web Property ID on [your Google Analytics Dashboard](https://analytics.google.com/analytics/web/). The ID will look like `UA-XXXXXXX-X`.
+* To enable Google Analytics, find your Web Property ID on [your Google Analytics Dashboard](https://analytics.google.com/analytics/web/).
+The ID will look like `UA-XXXXXXX-X`.
 * Copy your Web Property ID into the correct box
 * Check off the "Enable Analytics" box and hit the "Save All Changes" button to register your settings.
 
