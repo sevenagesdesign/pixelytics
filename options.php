@@ -30,7 +30,7 @@
                             <input name="web_property_id" type="text" value="<?php echo get_option('web_property_id'); ?>" placeholder="UA-0000000-0" />
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="enablerow" style="border-top: 1px solid rgba(0,0,0,0.1);">
                     	<th scope="row">
 							Enable Analytics:
                     	</th>
@@ -61,9 +61,9 @@
                             <input type="checkbox" name="pixel_lead_tracking" value="1" <?php checked( '1', get_option( 'pixel_lead_tracking' ) ); ?>>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="enablerow" style="border-top: 1px solid rgba(0,0,0,0.1);">
                     	<th scope="row">
-							Enable Analytics:
+							Enable Pixels:
                     	</th>
                     	<td>
                     		<input type="checkbox" name="pixel_activate" value="1" <?php checked( '1', get_option( 'pixel_activate' ) ); ?> />
