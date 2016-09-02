@@ -63,7 +63,7 @@
                     </tr>
                     <tr class="enablerow" style="border-top: 1px solid rgba(0,0,0,0.1);">
                     	<th scope="row">
-							Enable Pixels:
+							Enable Pixel:
                     	</th>
                     	<td>
                     		<input type="checkbox" name="pixel_activate" value="1" <?php checked( '1', get_option( 'pixel_activate' ) ); ?> />
@@ -76,5 +76,12 @@
                 <input class="button-primary" type="submit" value="<?php _e('Save All Changes'); ?>"/>
             </p>
         </form>
+    </div>
+    <div style="float: right;">
+        <?php
+            $plugin_data = get_plugin_data( __FILE__ );
+            $plugin_version = $plugin_data['Version'];
+            echo $plugin_version;
+        ?>
     </div>
 </div>

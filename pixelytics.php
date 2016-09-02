@@ -10,7 +10,7 @@
  * Plugin Name:       Pixelytics
  * Plugin URI:        https://github.com/soulexpression/pixelytics
  * Description:       Adds Google Analytics and Facebook Pixels to your WordPress website
- * Version:           1.2.2
+ * Version:           1.2.4
  * Author:            Seven Ages Design
  * Author URI:        http://sevenagesdesign.com/
  * License:           GPL-3.0+
@@ -79,8 +79,9 @@ function pixelytics_update() {
      * @since 1.2.1
      * @package pixelytics
      */
+
 	require_once ('admin/class-pixelytics-update.php');
-	$pixelytics_current_version = '1.2.2';
+	$pixelytics_current_version = '1.2.4';
 	$pixelytics_remote_path = 'http://www.sevenagesdesign.com/plugins/pixelytics/update.php';
 	$pixelytics_slug = plugin_basename( __FILE__ );
 	new wp_auto_update ($pixelytics_current_version, $pixelytics_remote_path, $pixelytics_slug);
@@ -89,28 +90,16 @@ add_action('init', 'pixelytics_update');
 
 /**
  * Adds Google Analytics to the head of the page
+ * This action is documented in admin/class-pixelytics-analytics.php
  */
 
 function pixelytics_analytics() {
-	$web_property_id = get_option('web_property_id');
-?>
-<!-- Google Analytics Code -->
-<script type="text/javascript">
-	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', '<?php echo $web_property_id ?>']);
-	_gaq.push(['_trackPageview']);
-	(function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	})();
-</script>
-<!-- End Google Analytics Code -->
-<?php
+	include plugin_dir_path( __FILE__ ) . 'admin/class-pixelytics-analytics.php';
 }
 
 /**
  * Adds Facebook Pixel to the head of the page
+ * This action is documented in admin/class-pixelytics-pixel.php
  */
 
 function pixelytics_pixel() {
