@@ -5,6 +5,7 @@
  *
  * @package    pixelytics
  * @subpackage pixelytics/admin
+ * @since 1.2.1
  */
 
 
@@ -22,7 +23,7 @@ $pixel_id = get_option('pixel_id');
 	fbq('track', "PageView");
 
 	<?php 
-		if( checked( '1', get_option( 'analytics_activate' ), false ) )
+		if( checked( '1', get_option( 'pixel_lead_tracking' ), false ) )
 			echo("fbq('track', 'Lead');");
 	?>
 	</script>
